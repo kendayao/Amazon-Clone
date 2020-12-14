@@ -2,7 +2,7 @@ import React from 'react';
 import './Checkout.css';
 import CheckoutProduct from '../checkout-product/CheckoutProduct'
 import Subtotal from "../subtotal/Subtotal"
-import {useStateValue} from '../../contextAPI/StateProvider'
+import {useStateValue} from '../../contextAPI/StateProvider';
 import {Link} from 'react-router-dom'
 
 
