@@ -30,21 +30,16 @@ function Payment() {
     const [clientSecret, setClientSecret]=useState(true);
 
     useEffect(()=>{
-    //generate stripe secret that allows us to charge a customer.. anytime basket changes we need a new seccret.
-
+    //generate stripe secret that allows us to charge a customer.. anytime basket changes we need a new secret.
     const getClientSecret=async()=>{
         const response=await axios.post('/payments/create',{
             amount: getBasketTotal(basket).toFixed(2)*100
         }).then(response=>(
             setClientSecret(response.data.clientSecret)
         ))
-
-      
     }
     getClientSecret();
     },[basket])
-
-
 
     const handleChange=event=>{
         // listen for changes in the card details and display any errors as the customer types card details
