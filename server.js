@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === "production") {
 // Define API routes here
 app.post('/payments/create', async(request, response)=>{
   const total=request.body.amount
-  console.log(total)
+  
   const paymentIntent=await stripe.paymentIntents.create({
       amount:total,
       currency: "usd"

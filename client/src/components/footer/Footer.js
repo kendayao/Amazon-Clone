@@ -1,7 +1,10 @@
 import React from 'react'
 import './Footer.css'
 import {Link} from 'react-router-dom'
+import {useStateValue} from '../../contextAPI/StateProvider';
+
 function Footer() {
+    const [{user}, dispatch]=useStateValue();
     return (
         <div className="footer">
             <div className="footer__section">
@@ -26,7 +29,7 @@ function Footer() {
                 </div>
                 <div className="footer__sectionContent">
                     <h4>Let Us Help You</h4>
-                    <p>Your Account</p>
+                    <Link to={user? '/': '/login'} className='footer__sectionLink'>Your Account</Link>
                     <Link to='/orders' className='footer__sectionLink'>Your Orders</Link>
                     <p>Returns</p>
                 </div>
