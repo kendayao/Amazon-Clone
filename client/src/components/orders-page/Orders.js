@@ -10,7 +10,7 @@ function Orders() {
 
     useEffect(()=>{
         if(user){
-            db.collection('users').doc(user?.uid).collection('orders').orderBy('created', 'desc')
+            db.collection('users').doc(user.uid).collection('orders').orderBy('created', 'desc')
             .onSnapshot(snapshot=>(
             setOrders(snapshot.docs.map(doc=>({
                 id: doc.id,
@@ -26,7 +26,7 @@ function Orders() {
             <div>
                 <h1>Your Orders</h1>
                 <div className='orders__order'>
-                    {orders?.map(order=>(
+                    {orders.map(order=>(
                         <OrderItem order={order}/>
                     ))}
                 </div>
