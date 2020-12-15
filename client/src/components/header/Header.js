@@ -1,14 +1,19 @@
+// React component imports
 import React from "react";
 import "./Header.css";
+// Material UI imports
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+// react router imports
 import {Link} from "react-router-dom";
+// context API imports
 import {useStateValue} from '../../contextAPI/StateProvider';
+// firebase imports
 import {auth} from '../../firebase/firebase'
 
 function Header() {
   const[{basket, user},dispatch]=useStateValue();
-
+  // firebase signout function
   const handleAuthentication=()=>{
     if(user){
       auth.signOut();

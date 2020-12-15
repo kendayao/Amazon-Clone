@@ -1,10 +1,13 @@
+// React component imports
 import React from "react";
 import "./Product.css";
+// context api imports
 import {useStateValue} from '../../contextAPI/StateProvider';
 
 function Product({ id, title, image, price, rating }) {
   const [{basket}, dispatch]=useStateValue();
 
+  // add to cart function
   const addToBasket = () => {
     //dispath the item to the data layer
     dispatch({

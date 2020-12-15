@@ -1,14 +1,16 @@
+// React component imports
 import React from 'react';
 import './Checkout.css';
 import CheckoutProduct from '../checkout-product/CheckoutProduct'
 import Subtotal from "../subtotal/Subtotal"
+// Context API Import
 import {useStateValue} from '../../contextAPI/StateProvider';
+// react router import
 import {Link} from 'react-router-dom'
 
 
 function Checkout() {
     const[{basket}, dispatch]=useStateValue();
-
     return (
         <div className="checkout">
             <div className="checkout__left">

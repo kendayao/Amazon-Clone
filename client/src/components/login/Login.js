@@ -1,6 +1,9 @@
+// React component imports
 import React, {useState} from 'react'
-import {Link, useHistory} from 'react-router-dom'
 import './Login.css'
+// react router imports
+import {Link, useHistory} from 'react-router-dom'
+// firebase imports
 import {auth} from '../../firebase/firebase'
 
 function Login() {
@@ -8,6 +11,7 @@ function Login() {
     const [email, setEmail]=useState('');
     const [password, setPassword]=useState('');
 
+    // sign in function
     const signIn=(event)=>{
         event.preventDefault();
         auth.signInWithEmailAndPassword(email, password)
@@ -17,6 +21,7 @@ function Login() {
         }).catch(error=>alert(error.message))
     }
 
+    // register email and password to firebase
     const register=event=>{
         event.preventDefault();
         auth.createUserWithEmailAndPassword(email, password)
@@ -40,7 +45,6 @@ function Login() {
                 <form>
                     <h5>E-mail</h5>
                     <input type='text' value={email} onChange={(event)=>setEmail(event.target.value)} />
-
                     <h5>Password</h5>
                     <input type='password' value={password} onChange={(event)=>setPassword(event.target.value)} />
                     <button type='submit' onClick={signIn} className='login__signInButton'>Sign In</button>

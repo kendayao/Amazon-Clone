@@ -1,10 +1,13 @@
+// React component imports
 import React from 'react';
 import './CheckoutProduct.css';
+// Context API import
 import {useStateValue} from '../../contextAPI/StateProvider';
 
 function CheckoutProduct({id, image, title, price, rating, hideButton}) {
     const [{basket}, dispatch]=useStateValue();
 
+    // remove from cart function call
     const removeFromBasket=()=>{
         dispatch({
             type: 'REMOVE_FROM_BASKET',

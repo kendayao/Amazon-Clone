@@ -1,7 +1,10 @@
+// React component imports
 import React from 'react';
-import CheckoutProduct from '../checkout-product/CheckoutProduct';
 import './OrderItem.css';
+import CheckoutProduct from '../checkout-product/CheckoutProduct';
+//moment.js import
 import moment from 'moment'
+//currenct formatter import
 import CurrencyFormat from 'react-currency-format'
 
 function OrderItem({order}) {

@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// Define API routes here
+// Stripe Intergration 
 app.post('/payments/create', async(request, response)=>{
   const total=request.body.amount
   

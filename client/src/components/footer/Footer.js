@@ -1,6 +1,9 @@
+// React component imports
 import React from 'react'
 import './Footer.css'
+// react router imports
 import {Link} from 'react-router-dom'
+// Context API imports
 import {useStateValue} from '../../contextAPI/StateProvider';
 
 function Footer() {
@@ -13,7 +16,6 @@ function Footer() {
                     <p>Careers</p>
                     <p>Blog</p>
                     <p>About Amazon</p>
-                    
                 </div>
                 <div className="footer__sectionContent">
                     <h4>Make Money with Us</h4>

@@ -1,8 +1,13 @@
+// React component imports
 import React from 'react'
 import "./Subtotal.css";
+// current formatter import
 import CurrencyFormat from "react-currency-format";
+//context api import
 import {useStateValue} from '../../contextAPI/StateProvider';
+//selector import
 import {getBasketTotal} from '../../contextAPI/reducer';
+//react router import
 import {useHistory} from 'react-router-dom'
 
 function Subtotal() {
