@@ -71,3 +71,7 @@
     text-align: center;
     margin-top: 10px;
 }
+
+.login__container-p{
+    margin-bottom: -10px;
+}
