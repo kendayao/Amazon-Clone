@@ -3,6 +3,8 @@ const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const cors=require("cors");
+const stripe=require("stripe")(process.env.SECRET_KEY)
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -14,7 +16,19 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
-
+app.post('/payments/create', async(request, response)=>{
+  const total=request.body.amount
+  console.log(total)
+  const paymentIntent=await stripe.paymentIntents.create({
+      amount:total,
+      currency: "usd"
+  })
+ 
+  //OK reponse-created payment intent
+  response.status(201).send({
+      clientSecret:paymentIntent.client_secret,
+  })
+})
 
 // Send every other request to the React app
 // Define any API routes before this runs

@@ -6,8 +6,8 @@ import {Link, useHistory} from 'react-router-dom';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import CurrencyFormat from "react-currency-format";
 import { getBasketTotal } from '../../contextAPI/reducer';
-// import axios from '../../utils/axios'
-// import {db} from '../../firebase/firebase'
+import axios from "axios";
+import {db} from '../../firebase/firebase'
 
 function Payment() {
     const[{basket, user}, dispatch]=useStateValue();
@@ -21,55 +21,58 @@ function Payment() {
     const [disabled, setDisabled]=useState(true);
     const [clientSecret, setClientSecret]=useState(true);
 
-    // useEffect(()=>{
-    // //generate stripe secret that allows us to charge a customer.. anytime basket changes we need a new seccret.
+    useEffect(()=>{
+    //generate stripe secret that allows us to charge a customer.. anytime basket changes we need a new seccret.
 
-    // const getClientSecret=async()=>{
-    //     const response=await axios({
-    //         method: 'post',
-    //         //stripe expects tota in a currency subunit
-    //         url: `/payments/create?total=${getBasketTotal(basket).toFixed(2)*100}`
-    //     });
-    //     setClientSecret(response.data.clientSecret)
-    // }
-    // getClientSecret();
-    // },[basket])
+    const getClientSecret=async()=>{
+        const response=await axios.post('/payments/create',{
+            amount: getBasketTotal(basket).toFixed(2)*100
+        }).then(response=>(
+            setClientSecret(response.data.clientSecret)
+        ))
 
-    // const handleChange=event=>{
-    //     // listen for changes in the card details and display any errors as the customer types card details
-    //     setDisabled(event.empty);
-    //     setError(event.error?event.error.message:"")
-    // }
+      
+    }
+    getClientSecret();
+    },[basket])
 
-    // const handleSubmit=async event=>{
-    //     event.preventDefault();
-    //     setProcessing(true);
 
-    //     const payload=await stripe.confirmCardPayment(clientSecret, {
-    //         payment_method:{
-    //             card: elements.getElement(CardElement)
-    //         }
-    //     }).then(({paymentIntent})=>{
 
-    //         //paymentIntent = payment confirmation
+    const handleChange=event=>{
+        // listen for changes in the card details and display any errors as the customer types card details
+        setDisabled(event.empty);
+        setError(event.error?event.error.message:"")
+    }
 
-    //         db.collection('users').doc(user?.uid).collection('orders').doc(paymentIntent.id).set({
-    //             basket: basket,
-    //             amount: paymentIntent.amount,
-    //             created: paymentIntent.created
-    //         })
-    //         setSucceeded(true);
-    //         setError(null);
-    //         setProcessing(false)
+    const handleSubmit=async event=>{
+        event.preventDefault();
+        setProcessing(true);
 
-    //         dispatch({
-    //             type:'EMPTY_BASKET'
-    //         })
+        const payload=await stripe.confirmCardPayment(clientSecret, {
+            payment_method:{
+                card: elements.getElement(CardElement)
+            }
+        }).then(({paymentIntent})=>{
 
-    //         // history replace because we dont want users to go back to payment page, so we dont use history.push
-    //         history.replace('/orders')
-    //     })
-    // }
+            //paymentIntent = payment confirmation
+
+            db.collection('users').doc(user.uid).collection('orders').doc(paymentIntent.id).set({
+                basket: basket,
+                amount: paymentIntent.amount,
+                created: paymentIntent.created
+            })
+            setSucceeded(true);
+            setError(null);
+            setProcessing(false)
+
+            dispatch({
+                type:'EMPTY_BASKET'
+            })
+
+            // history replace because we dont want users to go back to payment page, so we dont use history.push
+            history.replace('/orders')
+        })
+    }
 
     return (
         <div className='payment'>
@@ -107,8 +110,8 @@ function Payment() {
                         <h3>Payment Method</h3>
                     </div>
                     <div className='payment__details'>
-                        <form >
-                            <CardElement />
+                        <form onSubmit={handleSubmit}>
+                            <CardElement onChange={handleChange} />
                             <p>*Please use the following test credit card for payments*</p>
                             <p>4242 4242 4242 4242 - Exp:04/24 - CVV: 123 ZIP: 12345</p>
                             <div className='payment__priceContainer'>
