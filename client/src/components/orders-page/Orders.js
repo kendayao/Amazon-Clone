@@ -6,6 +6,8 @@ import OrderItem from '../order-item/OrderItem'
 import { db } from '../../firebase/firebase'
 //context api imports
 import {useStateValue} from '../../contextAPI/StateProvider'
+// react router imports
+import {Link} from 'react-router-dom'
 
 function Orders() {
     const[{basket, user}, dispatch]=useStateValue();
@@ -28,7 +30,11 @@ function Orders() {
         <div className='orders'>
             {orders.length>0?(
             <div>
+                <div className='orders__header'>
                 <h1>Your Orders</h1>
+                <Link to='/' className='orders_header-link'>Back to Homepage</Link>
+                </div>
+
                 <div className='orders__order'>
                     {orders?.map(order=>(
                         <OrderItem order={order}/>

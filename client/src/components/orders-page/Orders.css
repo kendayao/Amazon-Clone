@@ -2,6 +2,16 @@
     padding: 20px 80px;
 }
 
+.orders__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.orders_header-link{
+    font-size: 12px;
+}
+
 .orders > h1{
     margin: 30px 0;
 }
