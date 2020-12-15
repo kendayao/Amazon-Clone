@@ -50,8 +50,9 @@ function Login() {
                     <button type='submit' onClick={signIn} className='login__signInButton'>Sign In</button>
                 </form>
                 <p>By signing-in you agree to Amazon's-Clone Conditions of Use & Sale.
-                    Please see our Privacy Notice, our Cookies Notice and our Interest-Based Ads Notice
+                    Please see our Privacy Notice, our Cookies Notice and our Interest-Based Ads Notice. 
                 </p>
+                <p>*You may sign in using test credentials below or create your own account* email:cool_coder@email.com password:123456</p>
                 <button onClick={register} className='login__registerButton'>Create your Amazon account</button>
                 <Link className="login__homepage-link" to="/">Back to Amazon-Clone.com</Link>
             </div>
