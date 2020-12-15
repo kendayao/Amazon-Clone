@@ -1,12 +1,20 @@
+// React component imports
 import React, {useState, useEffect} from 'react';
 import './Payment.css';
-import {useStateValue} from '../../contextAPI/StateProvider';
 import CheckoutProduct from '../checkout-product/CheckoutProduct';
+// context api import
+import {useStateValue} from '../../contextAPI/StateProvider';
+// react router import
 import {Link, useHistory} from 'react-router-dom';
+// stripe integration import
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+// currency formatter import
 import CurrencyFormat from "react-currency-format";
+// basket total selector import
 import { getBasketTotal } from '../../contextAPI/reducer';
+// axios import
 import axios from "axios";
+// firebase import
 import {db} from '../../firebase/firebase'
 
 function Payment() {
@@ -48,14 +56,14 @@ function Payment() {
         event.preventDefault();
         setProcessing(true);
 
+        // confirming payment method
         const payload=await stripe.confirmCardPayment(clientSecret, {
             payment_method:{
                 card: elements.getElement(CardElement)
             }
         }).then(({paymentIntent})=>{
-
             //paymentIntent = payment confirmation
-
+            // once payment is confirmed add orders to firebase database
             db.collection('users').doc(user?.uid).collection('orders').doc(paymentIntent.id).set({
                 basket: basket,
                 amount: paymentIntent.amount,
@@ -69,7 +77,7 @@ function Payment() {
                 type:'EMPTY_BASKET'
             })
 
-            // history replace because we dont want users to go back to payment page, so we dont use history.push
+            // history replace because we dont want users to go back to payment page, dont use history.push
             history.replace('/orders')
         })
     }
