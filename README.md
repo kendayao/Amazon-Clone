@@ -41,12 +41,12 @@ NPM install in root folder to install dependancies for backend and frontend.
 
 ## Usage
 
-The deployed link will take you to the homepage. On the homepage, click on sign up to create and account or sign in to log in an existing account. You can log using the credentials below. Click on add to cart to add items to cart. Click on the cart icon to view your cart. On the cart page, you can remove items from your cart or proceed to checkout. On the checkout page, review your order and fill out your payment info using the test credit card provided.
+The deployed link will take you to the homepage. On the homepage, click on sign in to log into an existing account or create a new account. You can log using the test credentials below. Click on add to cart to add items to cart. Click on the cart icon to view your cart. On the cart page, you can remove items from your cart or proceed to checkout. On the checkout page, review your order and fill out your payment info using the test credit card provided.
 
 Public Login Credentials
 
-email: cool_coder@email.com
-password: 123456
+- email: cool_coder@email.com
+- password: 123456
 
 ## License
 
