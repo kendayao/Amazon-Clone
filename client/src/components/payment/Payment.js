@@ -6,8 +6,8 @@ import {Link, useHistory} from 'react-router-dom';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import CurrencyFormat from "react-currency-format";
 import { getBasketTotal } from '../../contextAPI/reducer';
-import axios from '../../utils/axios'
-import {db} from '../../firebase/firebase'
+// import axios from '../../utils/axios'
+// import {db} from '../../firebase/firebase'
 
 function Payment() {
     const[{basket, user}, dispatch]=useStateValue();
@@ -74,13 +74,13 @@ function Payment() {
     return (
         <div className='payment'>
             <div className='payment__container'>
-                <h1>Checkout (<Link to='/checkout'>{basket?.length} items</Link>)</h1>
+                <h1>Checkout (<Link to='/checkout'>{basket.length} items</Link>)</h1>
                 <div className='payment__section'>
                     <div className='payment__title'>
                         <h3>Delivery Address</h3>
                     </div>
                     <div className='payment__address'>
-                        <p>{user?.email}</p>
+                        <p>{user.email}</p>
                         <p>123 React Lane</p>
                         <p>Los Angeles, CA</p>
                     </div>
@@ -107,8 +107,8 @@ function Payment() {
                         <h3>Payment Method</h3>
                     </div>
                     <div className='payment__details'>
-                        <form onSubmit={handleSubmit}>
-                            <CardElement onChange={handleChange}/>
+                        <form >
+                            <CardElement />
                             <p>*Please use the following test credit card for payments*</p>
                             <p>4242 4242 4242 4242 - Exp:04/24 - CVV: 123 ZIP: 12345</p>
                             <div className='payment__priceContainer'>

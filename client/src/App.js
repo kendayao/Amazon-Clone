@@ -2,19 +2,19 @@ import React, {useEffect} from 'react'
 import Header from "./components/header/Header";
 import Home from "./components/home/Home";
 import Checkout from "./components/checkout/Checkout";
-// import Payment from './components/payment/Payment';
+import Payment from './components/payment/Payment';
 import Login from "./components/login/Login"
 // import Orders from "./components/orders-page/Orders"
 import "./App.css";
 import { Route, Switch, Redirect} from 'react-router-dom';
 import "react-router-dom";
 import { auth } from './firebase/firebase';
-// import {loadStripe} from "@stripe/stripe-js";
-// import {Elements} from "@stripe/react-stripe-js"
+import {loadStripe} from "@stripe/stripe-js";
+import {Elements} from "@stripe/react-stripe-js"
 import Footer from "./components/footer/Footer"
 import {useStateValue} from "./contextAPI/StateProvider"
 
-// const promise=loadStripe('pk_test_51Hd2wwD99Zg7DoCBCb1teG49Zx498uKexo7gQYEeyCu74jC5zILyS9i36ciltfcaUVMSzAVgQ8rj3bFb1wFgasrW00uILahd67')
+const promise=loadStripe('pk_test_51Hd2wwD99Zg7DoCBCb1teG49Zx498uKexo7gQYEeyCu74jC5zILyS9i36ciltfcaUVMSzAVgQ8rj3bFb1wFgasrW00uILahd67')
 
 function App() {
   const [{user}, dispatch]=useStateValue();
@@ -53,14 +53,14 @@ function App() {
         <Route path="/login">
           <Login/>  
         </Route>
-        {/* <Route path="/payment">
+        <Route path="/payment">
           {!user&&<Redirect to="/"/>}
           <Header />
           <Elements stripe={promise}>
             <Payment />
           </Elements>
           <Footer />
-        </Route> */}
+        </Route>
         <Route path="/">
           <Header />
           <Home /> 
