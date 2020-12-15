@@ -8,7 +8,7 @@ import {useHistory} from 'react-router-dom'
 function Subtotal() {
     const history=useHistory();
     const [{user, basket}, dispatch]=useStateValue();
-    console.log(getBasketTotal(basket).toFixed(2))
+    
     return (
         <div className="subtotal">
             <CurrencyFormat 

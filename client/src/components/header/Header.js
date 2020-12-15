@@ -31,7 +31,7 @@ function Header() {
       <div className="header__nav">
         <Link className="header__link" to={!user&&'/login'}>
           <div onClick={handleAuthentication} className="header__option">
-            <span className="header__optionLineOne">{user ? 'Hello, ' + user.email: 'Hello Guest'}</span>
+            <span className="header__optionLineOne">{user ? 'Hello, ' + user?.email: 'Hello Guest'}</span>
             <span className="header__optionLineTwo">{user? 'Sign Out' : 'Sign In'}</span>
           </div>
         </Link>
@@ -48,7 +48,7 @@ function Header() {
         <Link className="header__link" to="/checkout">
           <div className="header__optionBasket">
             <ShoppingBasketIcon />
-            <span className="header__optionLineTwo header__basketCount">{basket.length}</span>
+            <span className="header__optionLineTwo header__basketCount">{basket?.length}</span>
           </div>
         </Link>
       </div>

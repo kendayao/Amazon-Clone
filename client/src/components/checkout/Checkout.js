@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom'
 
 function Checkout() {
     const[{basket}, dispatch]=useStateValue();
-    console.log({basket})
+
     return (
         <div className="checkout">
             <div className="checkout__left">

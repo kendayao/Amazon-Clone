@@ -6,13 +6,13 @@ import Product from "../product/Product";
 function Home() {
 
 
-  // image="https://images-na.ssl-images-amazon.com/images/I/810%2BGNdkzKL._AC_SX450_.jpg"
+ 
   return (
     <div className="home">
       <div className="home__container">
         <img
           className="home__image"
-          src="https://images-na.ssl-images-amazon.com/images/G/01/kindle/journeys/YzExNTRjZmUt/YzExNTRjZmUt-YTJjN2Q5MTct-w1500._CB414654619_.jpg"
+          src="https://images-na.ssl-images-amazon.com/images/G/01/kindle/journeys/YTQzYWRkNWYt/YTQzYWRkNWYt-MzQzYWI0MmQt-w1500._CB415087965_.jpg"
           alt="banner"
         />
         <div className="home__row">
