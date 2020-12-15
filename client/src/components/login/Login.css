@@ -64,3 +64,10 @@
     margin-top: 10px;
     border-color: darkgrey;
 }
+
+.login__homepage-link{
+    color: #007185;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;
+}

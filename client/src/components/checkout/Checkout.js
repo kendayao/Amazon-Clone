@@ -32,7 +32,7 @@ function Checkout() {
                     <div className="checkout__empty">
                         <h1 className='checkout__emptyTitle'>Your Shopping Cart is empty.</h1>
                         <p className='checkout__emptyContent'>Your Shopping Cart lives to serve. Give it purpose — fill it with groceries, clothing, household supplies, electronics, and more.
-                        Continue shopping on the <Link className='checkout__emptyLink' to='/'>Amazon.com homepage</Link>.</p>
+                        Continue shopping on the <Link className='checkout__emptyLink' to='/'>Amazon-Clone.com homepage</Link>.</p>
                     </div>}
             </div>
             <div className="checkout__right">

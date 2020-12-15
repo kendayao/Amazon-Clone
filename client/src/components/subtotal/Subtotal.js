@@ -31,7 +31,7 @@ function Subtotal() {
             
             />
             {(user && basket.length>0) ? <button onClick={e=>history.push('/payment')}>Proceed to Checkout</button>:
-            (user && basket.length===0)?<button disabled>Add items to basket</button>:
+            (user && basket.length===0)?<button disabled>Add items to cart</button>:
             !user ? <button disabled>Sign In to Checkout</button>:<button disabled>Sign In to Checkout</button> }
         </div>
     )
