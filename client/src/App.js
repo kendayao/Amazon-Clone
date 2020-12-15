@@ -4,7 +4,7 @@ import Home from "./components/home/Home";
 import Checkout from "./components/checkout/Checkout";
 import Payment from './components/payment/Payment';
 import Login from "./components/login/Login"
-// import Orders from "./components/orders-page/Orders"
+import Orders from "./components/orders-page/Orders"
 import "./App.css";
 import { Route, Switch, Redirect} from 'react-router-dom';
 import "react-router-dom";
@@ -40,11 +40,11 @@ function App() {
   return (
     <div className="app">
       <Switch>
-      {/* <Route path="/orders">
+      <Route path="/orders">
           <Header />
           <Orders/> 
           <Footer />
-        </Route> */}
+        </Route>
         <Route path="/checkout">
           <Header />
           <Checkout/> 
