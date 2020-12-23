@@ -44,7 +44,9 @@
   }
 
   @media (max-width: 480px){
-    .product > img{
-      margin-top: 40px;
+    .product__info {
+      margin-bottom: 45px;
     }
+
+
   }
