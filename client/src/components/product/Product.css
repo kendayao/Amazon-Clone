@@ -43,8 +43,8 @@
     color: #111;
   }
 
-  @media (max-width: 800px){
+  @media (max-width: 480px){
     .product > img{
-      margin-top: 30px;
+      margin-top: 40px;
     }
   }
