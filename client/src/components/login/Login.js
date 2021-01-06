@@ -53,7 +53,7 @@ function Login() {
                     Please see our Privacy Notice, our Cookies Notice and our Interest-Based Ads Notice. 
                 </p>
                 <p className='login__container-p'>*You may sign in using test credentials below or create your own account*</p>
-                <p>email: cool_coder@email.com password: 123456</p>
+                <p>email: cool_coder@email.com password: 12341234</p>
                 <button onClick={register} className='login__registerButton'>Create your Amazon account</button>
                 <Link className="login__homepage-link" to="/">Back to Amazon-Clone.com</Link>
             </div>

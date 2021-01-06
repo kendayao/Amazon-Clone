@@ -46,7 +46,7 @@ The deployed link will take you to the homepage. On the homepage, click on sign 
 Public Login Credentials
 
 - email: cool_coder@email.com
-- password: 123456
+- password: 12341234
 
 ## License
 
