@@ -70,4 +70,6 @@ For any questions, please contact kendayao at kendayao@gmail.com
 
 Deployed application link: https://amazon-twin-app.herokuapp.com/ 
 
+Video demo link: https://giphy.com/gifs/P3BFoPqZuCfF4MFulM/fullscreen
+
 <img src="client/public/amazon-clone.png" width="550" height="350">
