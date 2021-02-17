@@ -1,12 +1,7 @@
 // React component imports
-import React, {useEffect} from 'react';
-import Header from "./components/header/Header";
-import Home from "./components/home/Home";
-import Checkout from "./components/checkout/Checkout";
-import Payment from './components/payment/Payment';
-import Login from "./components/login/Login";
-import Orders from "./components/orders-page/Orders";
-import Footer from "./components/footer/Footer";
+import React, {useEffect, lazy, Suspense} from 'react';
+
+
 import "./App.css";
 // react router imports
 import { Route, Switch, Redirect} from 'react-router-dom';
@@ -18,6 +13,14 @@ import {loadStripe} from "@stripe/stripe-js";
 import {Elements} from "@stripe/react-stripe-js";
 // context api import
 import {useStateValue} from "./contextAPI/StateProvider";
+
+const Header = lazy(()=>import('./components/header/Header'))
+const Home = lazy(()=>import('./components/home/Home'))
+const Footer = lazy(()=>import('./components/footer/Footer'))
+const Checkout = lazy(()=>import('./components/checkout/Checkout'))
+const Payment = lazy(()=>import('./components/payment/Payment'))
+const Login = lazy(()=>import('./components/login/Login'))
+const Orders = lazy(()=>import('./components/orders-page/Orders'))
 
 const promise=loadStripe('pk_test_51Hd2wwD99Zg7DoCBCb1teG49Zx498uKexo7gQYEeyCu74jC5zILyS9i36ciltfcaUVMSzAVgQ8rj3bFb1wFgasrW00uILahd67')
 
@@ -45,7 +48,9 @@ function App() {
 
   return (
     <div className="app">
+        <Suspense fallback={<div>....Loading</div>}> 
       <Switch>
+    
       <Route path="/orders">
           <Header />
           <Orders/> 
@@ -67,12 +72,15 @@ function App() {
           </Elements>
           <Footer />
         </Route>
+        
         <Route path="/">
           <Header />
           <Home /> 
           <Footer />
         </Route>
+        
       </Switch>
+      </Suspense>
     </div>
   );
 }

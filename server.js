@@ -1,12 +1,14 @@
 require('dotenv').config()
 const express = require("express");
 const path = require("path");
+const compression = require('compression')
 const PORT = process.env.PORT || 3001;
 const app = express();
 const cors=require("cors");
 const stripe=require("stripe")(process.env.SECRET_KEY)
 
 // Define middleware here
+app.use(compression())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors({origin: true}));
