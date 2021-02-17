@@ -71,7 +71,6 @@ function App() {
             </Elements>
             <Footer />
           </Route>
-          
           <Route path="/">
             <Header />
             <Home /> 
