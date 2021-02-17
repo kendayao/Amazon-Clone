@@ -1,6 +1,6 @@
 // React component imports
 import React, {useEffect, lazy, Suspense} from 'react';
-
+import Spinner from './components/spinner/Spinner'
 
 import "./App.css";
 // react router imports
@@ -48,38 +48,36 @@ function App() {
 
   return (
     <div className="app">
-        <Suspense fallback={<div>....Loading</div>}> 
-      <Switch>
-    
-      <Route path="/orders">
-          <Header />
-          <Orders/> 
-          <Footer />
-        </Route>
-        <Route path="/checkout">
-          <Header />
-          <Checkout/> 
-          <Footer /> 
-        </Route>
-        <Route path="/login">
-          <Login/>  
-        </Route>
-        <Route path="/payment">
-          {!user&&<Redirect to="/"/>}
-          <Header />
-          <Elements stripe={promise}>
-            <Payment />
-          </Elements>
-          <Footer />
-        </Route>
-        
-        <Route path="/">
-          <Header />
-          <Home /> 
-          <Footer />
-        </Route>
-        
-      </Switch>
+      <Suspense fallback={<Spinner/>}> 
+        <Switch>
+        <Route path="/orders">
+            <Header />
+            <Orders/> 
+            <Footer />
+          </Route>
+          <Route path="/checkout">
+            <Header />
+            <Checkout/> 
+            <Footer /> 
+          </Route>
+          <Route path="/login">
+            <Login/>  
+          </Route>
+          <Route path="/payment">
+            {!user&&<Redirect to="/"/>}
+            <Header />
+            <Elements stripe={promise}>
+              <Payment />
+            </Elements>
+            <Footer />
+          </Route>
+          
+          <Route path="/">
+            <Header />
+            <Home /> 
+            <Footer />
+          </Route>
+        </Switch>
       </Suspense>
     </div>
   );
